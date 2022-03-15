@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function MusicPlayer() {
+
   const handlePlay = (): void => {
     console.log("handle play");
     // Todo: hanlde play
@@ -10,6 +11,16 @@ function MusicPlayer() {
     console.log(`updating volume to ${e.target.value}`);
     // Todo: adjust volume
   };
+
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  const audioContext = new AudioContext();
+
+
+  // Use the `audio` element as a souce
+  const audioElement = document.querySelector('audio');
+
+  const track = audioContext.createMediaElementSource(audioElement);
+
 
   return (
     <div className="container">
